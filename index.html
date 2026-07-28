@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Insights Analytics</title>
+  <title>Insights Analytics — Fractional Analytics as a Service</title>
+  <meta name="description" content="Keeping your data in sight so you don't have to. End-to-end analytics infrastructure — ingestion, warehousing, transformation, and dashboards. Fixed-scope engagements on Google Cloud, starting with a two-week Discovery Sprint." />
+  <!-- Open Graph (iMessage, LinkedIn, Facebook, Slack) -->
+  <meta property="og:title" content="Insights Analytics — Fractional Analytics as a Service" />
+  <meta property="og:description" content="Keeping your data in sight so you don't have to. Full-stack analytics on Google Cloud — scoped properly, priced up front, no open-ended engagements." />
+  <meta property="og:url" content="https://insightsanalytics.info" />
+  <meta property="og:type" content="website" />
+  <!-- Twitter / iMessage fallback -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Insights Analytics — Fractional Analytics as a Service" />
+  <meta name="twitter:description" content="Keeping your data in sight so you don't have to. Full-stack GCP analytics, fixed scope." />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <!-- Google Analytics GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBJWER4H1"></script>
@@ -541,130 +550,58 @@
     }
 
     /* ── PRICING ── */
-    #pricing {
-      background: var(--paper);
-    }
+    #pricing { background: var(--paper); }
+    .steps-row { display: grid; grid-template-columns: repeat(3, 1fr); position: relative; }
+    .step-card { padding: 44px 36px 40px; border-right: 1px solid var(--rule); position: relative; display: flex; flex-direction: column; transition: background 0.2s; }
+    .step-card:last-child { border-right: none; }
+    .step-card:hover { background: #fff; }
+    .step-card.is-primary { background: #fff; box-shadow: inset 0 3px 0 var(--teal); }
+    .step-card.is-primary:hover { background: #fff; }
+    .step-connector { position: absolute; top: 62px; right: -13px; width: 26px; height: 26px; background: var(--paper); border: 1px solid var(--teal); display: flex; align-items: center; justify-content: center; z-index: 3; }
+    .step-card:last-child .step-connector { display: none; }
+    .step-connector svg { width: 11px; height: 11px; fill: none; stroke: var(--teal); stroke-width: 2; }
+    .step-eyebrow-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; min-height: 21px; }
+    .step-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #9e9890; }
+    .step-tag { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); border: 1px solid rgba(45,146,157,0.45); padding: 3px 8px; white-space: nowrap; }
+    .step-name { font-family: var(--sans); font-size: 23px; font-weight: 700; color: var(--dark); letter-spacing: -0.02em; margin-bottom: 14px; }
+    .step-price { font-family: var(--sans); font-weight: 700; color: var(--teal); letter-spacing: -0.03em; line-height: 1; font-size: 38px; display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; }
+    .step-card.is-primary .step-price { font-size: 52px; }
+    .step-price .qual { font-family: var(--mono); font-size: 13px; font-weight: 400; letter-spacing: 0.02em; color: #8a8a8a; }
+    .step-price .unit { font-family: var(--mono); font-size: 15px; font-weight: 400; color: var(--teal); letter-spacing: 0; }
+    .step-terms { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #8a8a8a; margin-top: 10px; }
+    .step-lede { font-family: var(--sans); font-size: 14px; line-height: 1.6; color: #5f6668; margin-top: 16px; }
+    .step-rule { height: 1px; background: var(--rule); margin: 22px 0; }
+    .step-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .step-list-item { display: flex; gap: 10px; font-family: var(--sans); font-size: 13.5px; line-height: 1.55; color: #555c5e; }
+    .step-list-item::before { content: '—'; color: var(--teal); flex-shrink: 0; font-size: 12px; margin-top: 2px; }
+    .step-list-item.accent { color: var(--dark); font-weight: 600; }
+    .step-aside { font-family: var(--sans); font-size: 13px; line-height: 1.6; color: #6b7070; margin-top: 18px; padding-left: 12px; border-left: 2px solid var(--rule); }
+    .step-confirm { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: #9e9890; margin-top: 16px; }
+    .step-cta-wrap { margin-top: auto; padding-top: 28px; }
+    .step-btn { display: block; text-align: center; font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; padding: 14px; text-decoration: none; border: 1px solid var(--ink); color: var(--ink); transition: background 0.15s, color 0.15s, border-color 0.15s; }
+    .step-btn:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
+    .step-btn.primary { background: var(--teal); border-color: var(--teal); color: #fff; }
+    .step-btn.primary:hover { background: var(--dark); border-color: var(--dark); color: #fff; }
 
-    .pricing-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
+    /* Trust strip */
+    .trust-row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); background: var(--paper2); }
+    .trust-cell { padding: 26px 36px; border-right: 1px solid var(--rule); }
+    .trust-cell:last-child { border-right: none; }
+    .trust-title { font-family: var(--sans); font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 6px; letter-spacing: -0.01em; }
+    .trust-body { font-family: var(--sans); font-size: 13px; line-height: 1.6; color: #6b7070; }
 
-    .pricing-card-a {
-      padding: 48px 40px;
-      border-right: 1px solid var(--rule);
-      transition: background 0.2s;
-    }
-
-    .pricing-card-a:hover { background: #fff; }
-
-    .pricing-card-a.highlight {
-      background: var(--dark);
-    }
-
-    .pricing-card-a.highlight:hover { background: #252d2f; }
-
-    .pricing-tier {
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 16px;
-    }
-
-    .pricing-name {
-      font-family: var(--sans);
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--dark);
-      letter-spacing: -0.02em;
-      margin-bottom: 6px;
-    }
-
-    .pricing-card-a.highlight .pricing-name { color: #fff; }
-
-    .pricing-amount {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--teal);
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .pricing-period {
-      font-size: 11px;
-      color: #888;
-      margin-bottom: 32px;
-      font-family: var(--sans);
-    }
-
-    .pricing-card-a.highlight .pricing-period { color: rgba(255,255,255,0.3); }
-
-    .pricing-rule { height: 1px; background: var(--rule); margin-bottom: 24px; }
-    .pricing-card-a.highlight .pricing-rule { background: rgba(255,255,255,0.1); }
-
-    .pricing-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 32px;
-    }
-
-    .pricing-list-item {
-      display: flex;
-      gap: 10px;
-      font-size: 13px;
-      color: #555;
-      font-family: var(--sans);
-      line-height: 1.5;
-    }
-
-    .pricing-card-a.highlight .pricing-list-item { color: rgba(255,255,255,0.55); }
-
-    .pricing-list-item::before {
-      content: '—';
-      color: var(--teal);
-      flex-shrink: 0;
-      font-size: 12px;
-      margin-top: 1px;
-    }
-
-    .pricing-btn-a {
-      display: block;
-      width: 100%;
-      text-align: center;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 13px;
-      text-decoration: none;
-      border: 1px solid var(--ink);
-      color: var(--ink);
-      transition: background 0.15s, color 0.15s;
-    }
-
-    .pricing-btn-a:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
-
-    .pricing-card-a.highlight .pricing-btn-a {
-      border-color: var(--teal);
-      color: var(--teal);
-    }
-
-    .pricing-card-a.highlight .pricing-btn-a:hover {
-      background: var(--teal);
-      color: #fff;
-    }
-
-    .pricing-note {
-      padding: 20px 40px;
-      border-top: 1px solid var(--rule);
-      font-size: 11px;
-      color: #888;
-      font-family: var(--sans);
-    }
+    /* Secondary / fixed-scope block */
+    .fixed-block { border-top: 1px solid var(--rule); padding: 44px 36px 40px; display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .fixed-lede-title { font-family: var(--sans); font-size: 18px; font-weight: 700; color: var(--dark); letter-spacing: -0.01em; margin-bottom: 10px; }
+    .fixed-lede-body { font-family: var(--sans); font-size: 13.5px; line-height: 1.65; color: #6b7070; }
+    .fixed-foot { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #9e9890; margin-top: 18px; }
+    .fixed-cta { display: inline-block; margin-top: 18px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule-dark); padding-bottom: 3px; transition: color 0.15s, border-color 0.15s; }
+    .fixed-cta:hover { color: var(--teal); border-color: var(--teal); }
+    .fixed-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); }
+    .fixed-item { display: grid; grid-template-columns: 200px 1fr 90px; gap: 20px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+    .fixed-item-name { font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--dark); letter-spacing: -0.01em; }
+    .fixed-item-desc { font-family: var(--sans); font-size: 13px; line-height: 1.55; color: #6b7070; }
+    .fixed-item-price { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--teal); text-align: right; letter-spacing: -0.01em; }
 
     /* ── STACK ── */
     #stack {
@@ -949,7 +886,9 @@
       .service-col { padding: 52px 36px; }
       .pipeline-table th,
       .pipeline-table td { padding: 28px 36px; }
-      .pricing-card-a { padding: 56px 52px; }
+      .step-card { padding: 52px 46px; }
+      .trust-cell { padding: 32px 46px; }
+      .fixed-block { padding: 52px 46px; grid-template-columns: 340px 1fr; }
       .stack-cell { padding: 36px 28px; }
       .faq-item { padding: 44px 52px; }
       .contact-form-col,
@@ -992,8 +931,15 @@
       .pipeline-table td { padding: 4px 0; border: none; }
       .pipeline-step-num-cell { margin-bottom: 6px; }
 
-      .pricing-row { grid-template-columns: 1fr; }
-      .pricing-card-a { border-right: none; border-bottom: 1px solid var(--rule); }
+      .steps-row { grid-template-columns: 1fr; }
+      .step-card { border-right: none; border-bottom: 1px solid var(--rule); }
+      .step-card.is-primary .step-price { font-size: 44px; }
+      .step-connector { top: auto; bottom: -13px; right: 50%; transform: translateX(50%) rotate(90deg); }
+      .fixed-block { grid-template-columns: 1fr; gap: 28px; }
+      .fixed-item { grid-template-columns: 1fr 90px; }
+      .fixed-item-name { grid-area: 1 / 1; }
+      .fixed-item-price { grid-area: 1 / 2; }
+      .fixed-item-desc { grid-area: 2 / 1 / 3 / -1; }
 
       .stack-table { grid-template-columns: repeat(3, 1fr); }
       .stack-cell:nth-child(3) { border-right: none; }
@@ -1046,8 +992,13 @@
 
       .pipeline-table tr { padding: 20px; }
 
-      .pricing-card-a { padding: 36px 24px; }
-      .pricing-note { padding: 16px 24px; }
+      .step-card { padding: 34px 20px 32px; }
+      .step-card .step-price { font-size: 34px; }
+      .step-card.is-primary .step-price { font-size: 38px; }
+      .trust-row { grid-template-columns: 1fr; }
+      .trust-cell { border-right: none; border-bottom: 1px solid var(--rule); padding: 22px 20px; }
+      .trust-cell:last-child { border-bottom: none; }
+      .fixed-block { padding: 34px 20px; }
 
       .stack-table { grid-template-columns: repeat(2, 1fr); }
       .stack-cell:nth-child(2) { border-right: none; }
@@ -1118,7 +1069,7 @@
       <h1 class="hero-h1">Your data,<br><span>in sight.</span><br>Always.</h1>
     </div>
     <div class="hero-bottom">
-      <p class="hero-tagline">Keeping your data in sight so you don't have to. We deliver the full value of an in-house data team — ingestion, warehousing, transformation, dashboards — for a fraction of the cost.</p>
+      <p class="hero-tagline">Keeping your data in sight so you don't have to. We deliver the full value of an in-house data team — ingestion, warehousing, transformation, dashboards — scoped properly and priced up front.</p>
       <div class="hero-cta-row">
         <a href="https://calendly.com/scampbell-insightsanalytics" target="_blank" class="btn-a-primary">Book a Free Discovery Call</a>
         <a href="#pipeline" class="btn-a-ghost">See How It Works</a>
@@ -1188,8 +1139,8 @@
 
       <ul class="hero-stat-list">
         <li class="hero-stat-item">
-          <span class="hero-stat-key">Cost vs. full-time hire</span>
-          <span class="hero-stat-val teal">&lt; 40% of salary</span>
+          <span class="hero-stat-key">Engagement model</span>
+          <span class="hero-stat-val teal">Fixed scope</span>
         </li>
         <li class="hero-stat-item">
           <span class="hero-stat-key">Time to first dashboard</span>
@@ -1337,45 +1288,110 @@
   <div class="section-header">
     <div class="section-num">03 — Pricing</div>
     <div class="section-title-wrap">
-      <h2 class="section-title">Straightforward pricing. No surprises.</h2>
-      <p class="section-intro">Every engagement starts with a free 30-minute discovery call. Simpler builds cost less — we scope it together.</p>
+      <h2 class="section-title">How we work together.</h2>
+      <p class="section-intro">Start small, scope it properly, then build. No open-ended engagements.</p>
     </div>
   </div>
-  <div class="pricing-row">
-    <div class="pricing-card-a">
-      <div class="pricing-tier">Standard Build</div>
-      <div class="pricing-name">Implementation</div>
-      <div class="pricing-amount">Custom</div>
-      <div class="pricing-period">Project-based · scoped to your needs</div>
-      <div class="pricing-rule"></div>
-      <ul class="pricing-list">
-        <li class="pricing-list-item">GCP environment setup & architecture</li>
-        <li class="pricing-list-item">Data source connectors (volume-based)</li>
-        <li class="pricing-list-item">BigQuery data modeling</li>
-        <li class="pricing-list-item">Power BI dashboards</li>
-        <li class="pricing-list-item">Full documentation & handoff</li>
-        <li class="pricing-list-item">Simpler builds = lower cost</li>
+
+  <div class="steps-row">
+    <!-- STEP 1 -->
+    <div class="step-card">
+      <div class="step-connector"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-eyebrow-row"><span class="step-num">Step 1</span></div>
+      <div class="step-name">Discovery Sprint</div>
+      <div class="step-price">$3,000</div>
+      <div class="step-terms">2 weeks · fixed fee</div>
+      <p class="step-lede">Before anyone commits to a build, we find out exactly what it takes.</p>
+      <div class="step-rule"></div>
+      <ul class="step-list">
+        <li class="step-list-item">Data source audit — what you have, where it lives, how reliable it is</li>
+        <li class="step-list-item">Report inventory, mapped page by page</li>
+        <li class="step-list-item">Architecture plan: warehouse, pipelines, refresh cadence</li>
+        <li class="step-list-item">Fixed-price build quote with defined scope</li>
+        <li class="step-list-item accent">Fully credited toward your build if you proceed within 30 days</li>
       </ul>
-      <a href="https://calendly.com/scampbell-insightsanalytics" target="_blank" class="pricing-btn-a">Get a Quote →</a>
+      <div class="step-cta-wrap"><a href="https://calendly.com/scampbell-insightsanalytics" target="_blank" class="step-btn primary">Start with Discovery →</a></div>
     </div>
-    <div class="pricing-card-a highlight">
-      <div class="pricing-tier">Complex / Ongoing</div>
-      <div class="pricing-name">Fractional Retainer</div>
-      <div class="pricing-amount">$2–3K/mo</div>
-      <div class="pricing-period">$3,000/mo during build · $2,000/mo maintenance</div>
-      <div class="pricing-rule"></div>
-      <ul class="pricing-list">
-        <li class="pricing-list-item">Everything in Implementation</li>
-        <li class="pricing-list-item">Ongoing pipeline maintenance & monitoring</li>
-        <li class="pricing-list-item">New dashboards & reports on request</li>
-        <li class="pricing-list-item">Slack / email support included</li>
-        <li class="pricing-list-item">Monthly data review sessions</li>
-        <li class="pricing-list-item">You own everything — no lock-in</li>
+
+    <!-- STEP 2 -->
+    <div class="step-card is-primary">
+      <div class="step-connector"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-eyebrow-row"><span class="step-num">Step 2</span><span class="step-tag">Most common</span></div>
+      <div class="step-name">Implementation</div>
+      <div class="step-price"><span class="qual">from</span>$25,000</div>
+      <div class="step-terms">Project-based</div>
+      <div class="step-rule"></div>
+      <ul class="step-list">
+        <li class="step-list-item">GCP environment setup &amp; architecture</li>
+        <li class="step-list-item">Data source connectors — portal scraping, automated ingestion</li>
+        <li class="step-list-item">BigQuery data modeling &amp; warehouse build</li>
+        <li class="step-list-item">Power BI dashboard and report suite</li>
+        <li class="step-list-item">Automated refresh, monitoring &amp; alerting</li>
+        <li class="step-list-item">Full documentation &amp; handoff</li>
+        <li class="step-list-item accent">You own everything — no lock-in, no proprietary layer</li>
       </ul>
-      <a href="https://calendly.com/scampbell-insightsanalytics" target="_blank" class="pricing-btn-a">Book Discovery Call →</a>
+      <p class="step-aside">Phased delivery available — start with one province or one report suite and expand.</p>
+      <div class="step-confirm">Final scope and price confirmed in Discovery.</div>
+      <div class="step-cta-wrap"><a href="https://calendly.com/scampbell-insightsanalytics" target="_blank" class="step-btn">Get a Quote →</a></div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-card">
+      <div class="step-eyebrow-row"><span class="step-num">Step 3</span></div>
+      <div class="step-name">Ongoing Support</div>
+      <div class="step-price"><span class="qual">from</span>$1,800<span class="unit">/mo</span></div>
+      <div class="step-terms">12 hours included</div>
+      <div class="step-rule"></div>
+      <ul class="step-list">
+        <li class="step-list-item">Pipeline maintenance, monitoring &amp; scheduled data refreshes</li>
+        <li class="step-list-item">Error fixes and report maintenance</li>
+        <li class="step-list-item">Priority response — same or next business day</li>
+        <li class="step-list-item">Slack and email support</li>
+        <li class="step-list-item">Monthly data review session</li>
+        <li class="step-list-item">Additional hours at $150/hr · new development scoped and quoted separately</li>
+      </ul>
+      <div class="step-cta-wrap"><a href="https://calendly.com/scampbell-insightsanalytics" target="_blank" class="step-btn">Book a Call →</a></div>
     </div>
   </div>
-  <div class="pricing-note">* All pricing is scoped after a free discovery call. The average data analyst costs $90–120K/year in salary alone — Insights Analytics delivers equivalent value at less than half that cost.</div>
+
+  <!-- TRUST -->
+  <div class="trust-row">
+    <div class="trust-cell">
+      <div class="trust-title">No surprise invoices.</div>
+      <p class="trust-body">Every piece of work outside your retainer hours is scoped and approved by you before it starts.</p>
+    </div>
+    <div class="trust-cell">
+      <div class="trust-title">You own your stack.</div>
+      <p class="trust-body">Your GCP project, your data, your reports. If we stop working together, everything keeps running.</p>
+    </div>
+  </div>
+
+  <!-- FIXED-SCOPE -->
+  <div class="fixed-block">
+    <div>
+      <div class="fixed-lede-title">Not every project needs a full build.</div>
+      <p class="fixed-lede-body">Fixed-scope engagements for smaller asks — in cannabis or any other industry.</p>
+      <div class="fixed-foot">Fixed price · fixed scope · no retainer</div>
+      <a href="https://calendly.com/scampbell-insightsanalytics" target="_blank" class="fixed-cta">Tell me what you need →</a>
+    </div>
+    <div class="fixed-list">
+      <div class="fixed-item">
+        <span class="fixed-item-name">Data Health Check</span>
+        <span class="fixed-item-desc">Audit of your existing reports and pipelines. Written findings, prioritized fix list, effort estimates.</span>
+        <span class="fixed-item-price">$2,500</span>
+      </div>
+      <div class="fixed-item">
+        <span class="fixed-item-name">Dashboard in a Week</span>
+        <span class="fixed-item-desc">One connected data source, one report, up to 8 pages, two revision rounds. Delivered in five business days.</span>
+        <span class="fixed-item-price">$4,500</span>
+      </div>
+      <div class="fixed-item">
+        <span class="fixed-item-name">Report Rescue</span>
+        <span class="fixed-item-desc">Fix or rebuild an existing Power BI report that's broken, slow, or returning the wrong numbers.</span>
+        <span class="fixed-item-price">$3,500</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- STACK -->
@@ -1457,7 +1473,7 @@
     </div>
     <div class="faq-item">
       <div class="faq-q">What does "fractional" actually mean?</div>
-      <p class="faq-a">It means you get senior analyst and data engineer expertise without a full-time salary, benefits, or hiring overhead. You pay for the hours and capacity you actually need.</p>
+      <p class="faq-a">It means you get senior analyst and data engineer expertise without a full-time salary, benefits, or hiring overhead — as a defined engagement with a defined scope, not an open-ended commitment.</p>
     </div>
     <div class="faq-item">
       <div class="faq-q">Who owns the dashboards and models?</div>
@@ -1493,24 +1509,24 @@
         <div class="form-row-a">
           <div class="form-group-a">
             <label class="form-label-a">First Name</label>
-            <input class="form-input-a" type="text" name="first_name" placeholder="Jane" />
+            <input class="form-input-a" type="text" placeholder="Jane" />
           </div>
           <div class="form-group-a">
             <label class="form-label-a">Last Name</label>
-            <input class="form-input-a" type="text" name="last_name" placeholder="Smith" />
+            <input class="form-input-a" type="text" placeholder="Smith" />
           </div>
         </div>
         <div class="form-group-a">
           <label class="form-label-a">Email</label>
-          <input class="form-input-a" type="email" name="email" placeholder="jane@company.com" />
+          <input class="form-input-a" type="email" placeholder="jane@company.com" />
         </div>
         <div class="form-group-a">
           <label class="form-label-a">Company</label>
-          <input class="form-input-a" type="text" name="company" placeholder="Acme Corp" />
+          <input class="form-input-a" type="text" placeholder="Acme Corp" />
         </div>
         <div class="form-group-a">
           <label class="form-label-a">Tell us about your data situation</label>
-          <textarea class="form-textarea-a" name="message" placeholder="What data do you have? What decisions are you trying to make?"></textarea>
+          <textarea class="form-textarea-a" placeholder="What data do you have? What decisions are you trying to make?"></textarea>
         </div>
         <input type="hidden" name="_subject" value="New inquiry — Insights Analytics" />
         <button type="submit" class="form-submit-a" id="form-submit-btn">Send Message</button>
